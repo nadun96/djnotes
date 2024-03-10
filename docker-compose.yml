@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    image: nadunb96/notes-app:dj
+    deploy:
+      replicas: 1
+    ports:
+      - "81:8000"
+    networks:
+      - notes-network
+
+networks:
+  notes-network:
+    driver: overlay

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Detail</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        a {
+            display: inline-block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 4px;
+        }
+        
+        a:hover {
+            background-color: #0056b3;
+        }
+        
+        form {
+            display: inline-block;
+        }
+        
+        input[type="submit"] {
+            padding: 8px 16px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #c82333;
+        }
+        
+    </style>
+    <h1>{{ note.title }}</h1>
+    <p>{{ note.content }}</p>
+    <a href="{% url 'note_edit' note.pk %}">Edit Note</a>
+    <form action="{% url 'note_delete' note.pk %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete Note">
+    </form>
+    <a href="{% url 'note_list' %}">Back to Note List</a>
+</body>
+</html>
